@@ -1,0 +1,39 @@
+mysql> use stud;
+Database changed
+mysql> create table student_details(Reg_no int(9),Student_name varchar(25),Gender char(1),Mobile_no int(10),city varchar(15));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc student_details;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Reg_no       | int(9)      | YES  |     | NULL    |       |
+| Student_name | varchar(25) | YES  |     | NULL    |       |
+| Gender       | char(1)     | YES  |     | NULL    |       |
+| Mobile_no    | int(10)     | YES  |     | NULL    |       |
+| city         | varchar(15) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+5 rows in set (0.07 sec)
+
+mysql> alter table student_details add Country varchar(14);
+Query OK, 0 rows affected (0.03 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc student_details;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Reg_no       | int(9)      | YES  |     | NULL    |       |
+| Student_name | varchar(25) | YES  |     | NULL    |       |
+| Gender       | char(1)     | YES  |     | NULL    |       |
+| Mobile_no    | int(10)     | YES  |     | NULL    |       |
+| city         | varchar(15) | YES  |     | NULL    |       |
+| Country      | varchar(14) | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+6 rows in set (0.02 sec)
+
+mysql> truncate table student_details;
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> drop table student_details;
+Query OK, 0 rows affected (0.01 sec)
