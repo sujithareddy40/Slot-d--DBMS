@@ -1,0 +1,52 @@
+mysql> create database fruits;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use fruits;
+Database changed
+
+mysql> create table fruits(Name varchar(20),Coustomer_id int(5),Cost int(10));
+Query OK, 0 rows affected (0.07 sec)
+
+mysql> desc fruits;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Name         | varchar(20) | YES  |     | NULL    |       |
+| Coustomer_id | int(5)      | YES  |     | NULL    |       |
+| Cost         | int(10)     | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into fruits value('apple',12345,40);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into fruits value('mango',12453,60);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into fruits value('grapeS',12045,50);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into fruits value('berries',10234,65);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from fruits;
++---------+--------------+------+
+| Name    | Coustomer_id | Cost |
++---------+--------------+------+
+| apple   |        12345 |   40 |
+| mango   |        12453 |   60 |
+| grapeS  |        12045 |   50 |
+| berries |        10234 |   65 |
++---------+--------------+------+
+4 rows in set (0.00 sec)
+
+mysql> select cost from fruits;
++------+
+| cost |
++------+
+|   40 |
+|   60 |
+|   50 |
+|   65 |
++------+
+4 rows in set (0.00 sec)
