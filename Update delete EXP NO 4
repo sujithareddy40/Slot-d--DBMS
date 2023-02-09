@@ -1,0 +1,69 @@
+create database cricket;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use cricket;
+Database changed
+mysql> create table cricket(Name varchar(15),Country varchar(19),Age int(3));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc cricket;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| Name    | varchar(15) | YES  |     | NULL    |       |
+| Country | varchar(19) | YES  |     | NULL    |       |
+| Age     | int(3)      | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+
+
+mysql> insert into cricket value('Sachin','India',20);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into cricket value('Virat','USA',26);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into cricket value('Dhoni','Srilanka',23);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into cricket value('Rohith','Australia',27);
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select*from cricket;
++--------+-----------+------+
+| Name   | Country   | Age  |
++--------+-----------+------+
+| Sachin | India     |   20 |
+| Virat  | USA       |   26 |
+| Dhoni  | Srilanka  |   23 |
+| Rohith | Australia |   27 |
++--------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> update cricket set Name='Sharma' where Country='India';
+Query OK, 1 row affected (0.02 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select*from cricket;
++--------+-----------+------+
+| Name   | Country   | Age  |
++--------+-----------+------+
+| Sharma | India     |   20 |
+| Virat  | USA       |   26 |
+| Dhoni  | Srilanka  |   23 |
+| Rohith | Australia |   27 |
++--------+-----------+------+
+4 rows in set (0.00 sec)
+
+mysql> delete from cricket where Age<=22;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select*from cricket;
++--------+-----------+------+
+| Name   | Country   | Age  |
++--------+-----------+------+
+| Virat  | USA       |   26 |
+| Dhoni  | Srilanka  |   23 |
+| Rohith | Australia |   27 |
++--------+-----------+------+
+3 rows in set (0.00 sec)
