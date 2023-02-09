@@ -1,0 +1,57 @@
+mysql> use occupation;
+Database changed
+mysql> create table occupation(Name varchar(20),Age int(3),Occupation varchar(15));
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> desc occupation;
++------------+-------------+------+-----+---------+-------+
+| Field      | Type        | Null | Key | Default | Extra |
++------------+-------------+------+-----+---------+-------+
+| Name       | varchar(20) | YES  |     | NULL    |       |
+| Age        | int(3)      | YES  |     | NULL    |       |
+| Occupation | varchar(15) | YES  |     | NULL    |       |
++------------+-------------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> insert into occupation value('Ram',20,'Police');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> insert into occupation value('Prathap',24,'Software');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into occupation value('Ravi',26,'IPS');
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into occupation value('Rahul',21,'Docter');
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select*from occupation;
++---------+------+------------+
+| Name    | Age  | Occupation |
++---------+------+------------+
+| Ram     |   20 | Police     |
+| Prathap |   24 | Software   |
+| Ravi    |   26 | IPS        |
+| Rahul   |   21 | Docter     |
++---------+------+------------+
+4 rows in set (0.00 sec)
+
+mysql> select*from occupation where Age>23;
++---------+------+------------+
+| Name    | Age  | Occupation |
++---------+------+------------+
+| Prathap |   24 | Software   |
+| Ravi    |   26 | IPS        |
++---------+------+------------+
+2 rows in set (0.01 sec)
+
+
+mysql> select*from occupation where Name like'R%';
++-------+------+------------+
+| Name  | Age  | Occupation |
++-------+------+------------+
+| Ram   |   20 | Police     |
+| Ravi  |   26 | IPS        |
+| Rahul |   21 | Docter     |
++-------+------+------------+
+3 rows in set (0.00 sec)
