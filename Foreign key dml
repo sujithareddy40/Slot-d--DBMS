@@ -1,0 +1,29 @@
+mysql> create database fitness;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use fitness;
+Database changed
+mysql> create table fit(Trainer_id int(3) not null unique,Trainer_name varchar(18),Age int(3) check (Age<=30),primary key(Trainer_name));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc fit;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Trainer_id   | int(3)      | NO   | UNI | NULL    |       |
+| Trainer_name | varchar(18) | NO   | PRI |         |       |
+| Age          | int(3)      | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.05 sec)
+mysql> create table fitness(Trainer_id int(3) not null unique,Trainer_name varchar(18),Age int(3) check (Age<=30),foreign key(Trainer_name) references fit(Trainer_name));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> desc fitness;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| Trainer_id   | int(3)      | NO   | PRI | NULL    |       |
+| Trainer_name | varchar(18) | YES  | MUL | NULL    |       |
+| Age          | int(3)      | YES  |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+3 rows in set (0.02 sec)
