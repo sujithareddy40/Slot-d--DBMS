@@ -1,0 +1,103 @@
+mysql> create database marklist;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> use marklist;
+Database changed
+mysql> create table marks(Stu_Name varchar(14),Stu_ID int(3),Age int(3),Marks int(3));
+Query OK, 0 rows affected (0.08 sec)
+
+mysql> desc marks;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| Stu_Name | varchar(14) | YES  |     | NULL    |       |
+| Stu_ID   | int(3)      | YES  |     | NULL    |       |
+| Age      | int(3)      | YES  |     | NULL    |       |
+| Marks    | int(3)      | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+4 rows in set (0.01 sec)
+
+mysql> insert into marks value('Sai',123,12,23);
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into marks value('suchi',154,15,25);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into marks value('pooji',145,14,24);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into marks value('prasanna',126,13,21);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> select*from marks;
++----------+--------+------+-------+
+| Stu_Name | Stu_ID | Age  | Marks |
++----------+--------+------+-------+
+| Sai      |    123 |   12 |    23 |
+| suchi    |    154 |   15 |    25 |
+| pooji    |    145 |   14 |    24 |
+| prasanna |    126 |   13 |    21 |
++----------+--------+------+-------+
+4 rows in set (0.00 sec)
+
+mysql> select*from marks where Age between 20 and 24;
+Empty set (0.00 sec)
+
+mysql> select*from marks where Age between 10 and 14;
++----------+--------+------+-------+
+| Stu_Name | Stu_ID | Age  | Marks |
++----------+--------+------+-------+
+| Sai      |    123 |   12 |    23 |
+| pooji    |    145 |   14 |    24 |
+| prasanna |    126 |   13 |    21 |
++----------+--------+------+-------+
+3 rows in set (0.00 sec)
+
+mysql> select*from marks where Age in (13,14);
++----------+--------+------+-------+
+| Stu_Name | Stu_ID | Age  | Marks |
++----------+--------+------+-------+
+| pooji    |    145 |   14 |    24 |
+| prasanna |    126 |   13 |    21 |
++----------+--------+------+-------+
+2 rows in set (0.01 sec)
+
+mysql> select MAX(Age) from marks;
++----------+
+| MAX(Age) |
++----------+
+|       15 |
++----------+
+1 row in set (0.01 sec)
+
+mysql> select MIN(Age) from marks;
++----------+
+| MIN(Age) |
++----------+
+|       12 |
++----------+
+1 row in set (0.00 sec)
+
+mysql> select AVG(Age)AS 'Average Age: ' from marks;
++---------------+
+| Average Age:  |
++---------------+
+|       13.5000 |
++---------------+
+1 row in set (0.01 sec)
+
+mysql> select SUM(Age)AS 'Sum of all Ages: ' from marks;
++-------------------+
+| Sum of all Ages:  |
++-------------------+
+|                54 |
++-------------------+
+1 row in set (0.00 sec)
+
+mysql> select COUNT(Age)AS 'Total no.of elements: ' from marks;
++------------------------+
+| Total no.of elements:  |
++------------------------+
+|                      4 |
++------------------------+
+1 row in set (0.00 sec)
