@@ -1,0 +1,98 @@
+mysql> create database publish;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> use publish;
+Database changed
+mysql> create table books(BkNm char(30) NOT NULL UNIQUE,Bkid int(4),Author char(30) NOT NULL,Cost int(5) NOT NULL,primary key(Bkid));
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> desc books;
++--------+----------+------+-----+---------+-------+
+| Field  | Type     | Null | Key | Default | Extra |
++--------+----------+------+-----+---------+-------+
+| BkNm   | char(30) | NO   | UNI | NULL    |       |
+| Bkid   | int(4)   | NO   | PRI | 0       |       |
+| Author | char(30) | NO   |     | NULL    |       |
+| Cost   | int(5)   | NO   |     | NULL    |       |
++--------+----------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql> insert into books value('Fires_of_Hades',1145,'Abdul_Ceaser',4500);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into books value('viraamadaasam',9987,'Vishwak',5200);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into books value('Manalnevadra_aapedi',9123,'Pawan_Kalyan',500);
+Query OK, 1 row affected (0.02 sec)
+
+mysql> insert into books value('Nuvvukoodana',9087,'Pawan_Kalyan',7000);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> insert into books value('Agasthyaagnyaatham',9008,'Trivikram',700);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> select *from books;
++---------------------+------+--------------+------+
+| BkNm                | Bkid | Author       | Cost |
++---------------------+------+--------------+------+
+| Fires_of_Hades      | 1145 | Abdul_Ceaser | 4500 |
+| Agasthyaagnyaatham  | 9008 | Trivikram    |  700 |
+| Nuvvukoodana        | 9087 | Pawan_Kalyan | 7000 |
+| Manalnevadra_aapedi | 9123 | Pawan_Kalyan |  500 |
+| viraamadaasam       | 9987 | Vishwak      | 5200 |
++---------------------+------+--------------+------+
+5 rows in set (0.00 sec)
+
+mysql> update books set BkNm='Narakaagni' where Bkid=1145;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select *from books;
++---------------------+------+--------------+------+
+| BkNm                | Bkid | Author       | Cost |
++---------------------+------+--------------+------+
+| Narakaagni          | 1145 | Abdul_Ceaser | 4500 |
+| Agasthyaagnyaatham  | 9008 | Trivikram    |  700 |
+| Nuvvukoodana        | 9087 | Pawan_Kalyan | 7000 |
+| Manalnevadra_aapedi | 9123 | Pawan_Kalyan |  500 |
+| viraamadaasam       | 9987 | Vishwak      | 5200 |
++---------------------+------+--------------+------+
+5 rows in set (0.00 sec)
+
+mysql> delete from books where (Cost<=1000);
+Query OK, 2 rows affected (0.02 sec)
+
+mysql> select *from books;
++---------------+------+--------------+------+
+| BkNm          | Bkid | Author       | Cost |
++---------------+------+--------------+------+
+| Narakaagni    | 1145 | Abdul_Ceaser | 4500 |
+| Nuvvukoodana  | 9087 | Pawan_Kalyan | 7000 |
+| viraamadaasam | 9987 | Vishwak      | 5200 |
++---------------+------+--------------+------+
+3 rows in set (0.00 sec)
+
+mysql> delete from books where (Cost<=1000);rollback;
+Query OK, 0 rows affected (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select *from books;
++---------------+------+--------------+------+
+| BkNm          | Bkid | Author       | Cost |
++---------------+------+--------------+------+
+| Narakaagni    | 1145 | Abdul_Ceaser | 4500 |
+| Nuvvukoodana  | 9087 | Pawan_Kalyan | 7000 |
+| viraamadaasam | 9987 | Vishwak      | 5200 |
++---------------+------+--------------+------+
+3 rows in set (0.00 sec)
+
+mysql> select *from books;rollback;
++---------------+------+--------------+------+
+| BkNm          | Bkid | Author       | Cost |
++---------------+------+--------------+------+
+| Narakaagni    | 1145 | Abdul_Ceaser | 4500 |
+| Nuvvukoodana  | 9087 | Pawan_Kalyan | 7000 |
+| viraamadaasam | 9987 | Vishwak      | 5200 |
++---------------+------+--------------+------+
